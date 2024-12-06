@@ -1,0 +1,25 @@
+Las Damas:
+Tablero de 8x8 (64) colores: blanco (esquina inferior derecha) y negro
+12 peones por jugador, comienzan situados en las tres primeras filas en las casillas blancas
+Peones: Avanzan y capturan en diagonal sólo hacia adelante y sólo en avance de una casilla.
+Damas: Tanto para desplazarse como para realizar capturas, avanzan el número de casillas que se desee tanto hacia delante como hacia atrás, siempre en diagonal.
+
+?Puede cambiarse: podemos cambiar los peones por las damas para mayor visibilidad
+Casillas blancas: 0
+Casillas negras: 1
+Peones blancos: X
+Peones negros: Y
+Damas blancas: B
+Damas negras: N
+
+?Tablero inicial:
+0  Y  0  Y  0  Y  0  Y
+Y  0  Y  0  Y  0  Y  0
+0  Y  0  Y  0  Y  0  Y
+1  0  1  0  1  0  1  0
+0  1  0  1  0  1  0  1
+X  0  X  0  X  0  X  0
+0  X  0  X  0  X  0  X
+X  0  X  0  X  0  X  0
+Es feo de cojones JAJAJAJJA
+
