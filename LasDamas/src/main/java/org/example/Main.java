@@ -3,7 +3,18 @@ package org.example;
 import java.util.Arrays;
 
 public class Main {
+
+
+    static boolean turno = true;    //Cuando sea true = turno de los blancos / Cuando sea false = turno de los negros
+    //Este boolean lleva la dependencia del turno, tanto de los blancos como de los negros, la inversa de la matriz depende del turno también
+
     public static void main(String[] args) {
+
+        if (turno == true) {    //
+            String color = "b";
+        } else {
+            String color = "n";
+        }
 
         int pos = 0;
 
