@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class Method {
 
+    static Scanner entrada = new Scanner(System.in);
+
     public static void PlantillaInicio() {
 
         boolean salir = false;
