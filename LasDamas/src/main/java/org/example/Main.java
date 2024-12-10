@@ -14,6 +14,7 @@ public class Main {
 
     public static void main(String[] args) {
 
+        Method.PlantillaInicio();
         if (turno == true) {
             String color = "b";
         } else {

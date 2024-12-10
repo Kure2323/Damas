@@ -6,6 +6,12 @@ public class Method {
 
     static Scanner entrada = new Scanner(System.in);
 
+    public static void limpiarPantalla() {
+        for (int i = 0; i < 50; i++) {
+            System.out.println();
+        }
+    } //"Limpiar" la pantalla
+
     public static void PlantillaInicio() {
 
         boolean salir = false;
@@ -24,11 +30,18 @@ public class Method {
             System.out.println("Damas negras: N");
             System.out.println("Si consigues que un peón llegue a la parte opuesta de tu tablero este se convertirá en una dama");
             System.out.println("¿Empezamos?");
-            //escribir escaner
+            System.out.println("(S para empezar, N u otra cosa para repetir las reglas)");
+            String empezar = entrada.next();
+            if (empezar.equals("S")) {
+                salir=true;
+            } else {
+                limpiarPantalla();
+                continue;
+            }
 
         } while (!false);
 
-    }
+    } // Muestra las reglas del juego
 
     public static void MostrarMatriz(int[][] matriz) {
         for (int i = 0; i < matriz.length; i++) {
