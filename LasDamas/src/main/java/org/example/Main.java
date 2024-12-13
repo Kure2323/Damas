@@ -1,5 +1,4 @@
 package org.example;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -23,13 +22,8 @@ public class Main {
                 String color = "n";
             }
             String[] movimiento = Method.pedirMovimiento();
-            String[][] lleno = Method.juntarMatrices(tablero);
-            for (int i = 0; i < tablero.length; i++) {
-                for (int j = 0; j < tablero[i].length; j++) {
-                    System.out.print(lleno[i][j] + "  ");
-                }
-                System.out.println();
-            }
+            Method.mostrarTablero(tablero);
+
 
             break;
         }

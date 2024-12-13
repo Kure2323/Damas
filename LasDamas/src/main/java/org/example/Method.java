@@ -138,7 +138,7 @@ public class Method {
 
     }   //Pide la jugada y comprueba su formato
 
-    public static String[][] juntarMatrices(String[][] tablero) {
+    public static void mostrarTablero(String[][] tablero) {
 
         String[][] casillas = {{" ", "#"," ", "#"," ", "#"," ", "#"},{"#"," ", "#"," ", "#"," ", "#"," "},
                 {" ", "#"," ", "#"," ", "#"," ", "#"},{"#"," ", "#"," ", "#"," ", "#"," "},
@@ -150,11 +150,12 @@ public class Method {
                 if (tablero[i][j] == null) {
                     tablero[i][j] = casillas[i][j];
                 }
+                System.out.print(tablero[i][j] + "  ");
             }
+            System.out.println();
         }
-        return tablero;
 
-    }
+    }   //Junta las matrices de tablero y le pone las casillas para mostrarlo por pantalla
 
 
 
