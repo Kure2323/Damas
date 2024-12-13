@@ -14,30 +14,20 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Method.PlantillaInicio();
-        if (turno == true) {
-            String color = "b";
-        } else {
-            String color = "n";
-        }
-
-        int pos = 0;
-
-        String[][] matriz = new String[3][3];
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[i].length; j++) {
-
-                matriz[i][j] = Integer.toString(pos);
-                pos++;
+        Method.plantillaInicio();
+        while (true) {
+            if (turno) {
+                String color = "b";
+            } else {
+                String color = "n";
             }
+            String[] movimiento = Method.pedirMovimiento();
+
+            break;
         }
-        Method.MostrarMatriz(matriz);
-        System.out.println();
-        matriz = Method.InvertirMatriz(matriz);
-        System.out.println();
-        Method.MostrarMatriz(matriz);
-        System.out.println();
-        Method.MostrarMatriz(tablero);
+
+
+
 
 
 
