@@ -138,6 +138,24 @@ public class Method {
 
     }   //Pide la jugada y comprueba su formato
 
+    public static String[][] juntarMatrices(String[][] tablero) {
+
+        String[][] casillas = {{" ", "#"," ", "#"," ", "#"," ", "#"},{"#"," ", "#"," ", "#"," ", "#"," "},
+                {" ", "#"," ", "#"," ", "#"," ", "#"},{"#"," ", "#"," ", "#"," ", "#"," "},
+                {" ", "#"," ", "#"," ", "#"," ", "#"},{"#"," ", "#"," ", "#"," ", "#"," "},
+                {" ", "#"," ", "#"," ", "#"," ", "#"},{"#"," ", "#"," ", "#"," ", "#"," "}};
+
+        for (int i = 0; i < tablero.length; i++) {
+            for (int j = 0; j < tablero[i].length; j++) {
+                if (tablero[i][j] == null) {
+                    tablero[i][j] = casillas[i][j];
+                }
+            }
+        }
+        return tablero;
+
+    }
+
 
 
 
