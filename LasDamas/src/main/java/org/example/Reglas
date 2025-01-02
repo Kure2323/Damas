@@ -4,21 +4,22 @@ Tablero de 8x8 (64) colores: blanco (esquina inferior derecha) y negro
 Peones: Avanzan y capturan en diagonal sólo hacia adelante y sólo en avance de una casilla.
 Damas: Tanto para desplazarse como para realizar capturas, avanzan el número de casillas que se desee tanto hacia delante como hacia atrás, siempre en diagonal.
 
-Casillas blancas: 'espacio'
-Casillas negras: #
-Peones blancos: b
-Peones negros: n
-Damas blancas: B
-Damas negras: N
+Casillas blancas: .
+Casillas negras:
+Peones blancos: ●
+Peones negros: ○
+Damas blancas: ♛
+Damas negras: ♕
 
 ?Tablero inicial:
-______________________
-   n     n     n     n
-n     n     n     n
-   n     n     n     n
-#     #     #     #
-   #     #     #     #
-b     b     b     b
-   b     b     b     b
-b     b     b     b
-______________________
+_________________________
+  1  2  3  4  5  6  7  8
+A    ○     ○     ○     ○
+B ○     ○     ○     ○
+C    ○     ○     ○     ○
+D .     .     .     .
+E    .     .     .     .
+F ●     ●     ●     ●
+G    ●     ●     ●     ●
+H ●     ●     ●     ●
+_________________________
