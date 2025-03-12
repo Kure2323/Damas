@@ -16,9 +16,10 @@ public class Main {
             play.mostrarTablero();
             play.ejecutarMovimiento(play.pedirMovimiento());
 
-
+            play.cambioDama();
             play.cambioTurno();
             limpiarPantalla();
+
             System.out.println();
         }
 

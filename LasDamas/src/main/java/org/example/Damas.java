@@ -2,6 +2,7 @@ package org.example;
 
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -54,9 +55,9 @@ public class Damas {
      * Pide el
      * @return
      */
-    public Stack<Integer> pedirMovimiento() {
+    public int[] pedirMovimiento() {
 
-        Stack<Integer> pila = new Stack<>();
+        int[] numeros = new int[2];
         while (true) {
             try {
                 System.out.println("Es turno de las " + color + ", introduzca primero la posición de la ficha a mover, un '-' y la posición que quieres que vaya.");
@@ -66,8 +67,10 @@ public class Damas {
                     System.out.println("Debe introducirse los datos de la siguiente manera: 'num'-'num'");
                     continue;
                 }
-                for (String num : aux.split("-")) {
-                    pila.push(Integer.parseInt(num));
+                String[] aux2 = aux.split("-");
+
+                for (int i = 0; i < numeros.length; i++) {
+                    numeros[i] = Integer.parseInt(aux2[i]);
                 }
 
 
@@ -78,7 +81,7 @@ public class Damas {
             break;
 
         }
-        return pila;
+        return numeros;
 
 
     }   //Pide la jugada y comprueba su formato
@@ -110,7 +113,7 @@ public class Damas {
      * @param movimiento
      * @return
      */
-    public void ejecutarMovimiento(Stack movimiento) {
+    public void ejecutarMovimiento(int[] movimiento) {
 
 
         String destino = "";
@@ -118,48 +121,46 @@ public class Damas {
         int cont = 1;
 
         forInicial:
-        for (int k = 0; k < 2; k++) {
-            for (int i = 0; i < tablero.length; i++) {
+        for (int i = 0; i < tablero.length; i++) {
 
-                if (i % 2 == 0) {
-                    for (int j = 1; j < tablero[i].length; j++) {
+            if (i % 2 == 0) {
+                for (int j = 1; j < tablero[i].length; j++) {
 
-                        System.out.print(tablero[i][j]);
-                        if (cont == (int) movimiento.peek() && movimiento.size() == 2) {
-                            movimiento.pop();
-                            destino = i + "" + j;
-                        } else if (cont == (int) movimiento.peek()) {
-                            movimiento.pop();
-                            inicio = i +""+ j;
-                        }
-                        if (movimiento.isEmpty()) {
-                            break forInicial;
-                        }
-                        System.out.println(cont);
-                        cont++;
-                        j++;
+                    System.out.print(tablero[i][j]);
+
+                    if (movimiento[0] == cont) {
+                        inicio = i+""+j;
+                    } else if (movimiento[1] == cont) {
+                        destino = i+""+j;
                     }
-                } else {
-                    for (int j = 0; j < tablero[i].length; j++) {
-
-                        System.out.print(tablero[i][j]);
-                        if (cont == (int) movimiento.peek() && movimiento.size() == 2) {
-                            movimiento.pop();
-                            destino = i + "" + j;
-                        } else if (cont == (int) movimiento.peek()) {
-                            movimiento.pop();
-                            inicio = i +""+ j;
-                        }
-                        if (movimiento.isEmpty()) {
-                            break forInicial;
-                        }
-                        System.out.println(cont);
-                        cont++;
-                        j++;
+                    if (!inicio.isEmpty() && !destino.isEmpty()) {
+                        break forInicial;
                     }
+
+                    System.out.println(cont);
+                    cont++;
+                    j++;
                 }
+            } else {
+                for (int j = 0; j < tablero[i].length; j++) {
 
+                    System.out.print(tablero[i][j]);
+
+                    if (movimiento[0] == cont) {
+                        inicio = i +""+j;
+                    } else if (movimiento[1] == cont) {
+                        destino = i+""+j;
+                    }
+                    if (!inicio.isEmpty() && !destino.isEmpty()) {
+                        break forInicial;
+                    }
+
+                    System.out.println(cont);
+                    cont++;
+                    j++;
+                }
             }
+
         }
 
         System.out.println(cont);
@@ -180,6 +181,7 @@ public class Damas {
                 tablero[Integer.parseInt(inicio.substring(0, 1))][Integer.parseInt(inicio.substring(1, 2))].equals(" ") ||
                 tablero[Integer.parseInt(inicio.substring(0, 1))][Integer.parseInt(inicio.substring(1, 2))].equals("♛") ||
                 tablero[Integer.parseInt(inicio.substring(0, 1))][Integer.parseInt(inicio.substring(1, 2))].equals("●")) {
+            cambioTurno();
             System.out.println("No puede mover porque estás moviendo una ficha que no toca o hacia donde no toca.");
 
         } else {
@@ -196,6 +198,7 @@ public class Damas {
                 tablero[Integer.parseInt(inicio.substring(0, 1))][Integer.parseInt(inicio.substring(1, 2))].equals(" ") ||
                 tablero[Integer.parseInt(inicio.substring(0, 1))][Integer.parseInt(inicio.substring(1, 2))].equals("♕") ||
                 tablero[Integer.parseInt(inicio.substring(0, 1))][Integer.parseInt(inicio.substring(1, 2))].equals("○")) {
+            cambioTurno();
             System.out.println("No puede mover porque estás moviendo una ficha que no toca o hacia donde no toca.");
 
         } else {
