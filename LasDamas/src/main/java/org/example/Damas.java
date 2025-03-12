@@ -112,48 +112,100 @@ public class Damas {
      */
     public void ejecutarMovimiento(Stack movimiento) {
 
-        if (turno) { //Turno de las blancas
 
-
-
-        } else { //Turno de las negras
-
-        }
-
-
-    }
-
-    private String[][] movimientoBlancas(Stack movimiento) {
-
-        int destino = (int) movimiento.pop();
-        int inicio = (int) movimiento.pop();
+        String destino = "";
+        String inicio = "";
         int cont = 1;
 
-        for (int i = 0; i < tablero.length; i++) {
+        forInicial:
+        for (int k = 0; k < 2; k++) {
+            for (int i = 0; i < tablero.length; i++) {
 
-            if (i % 2 == 0) {
-                for (int j = 1; j < tablero[i].length; j++) {
+                if (i % 2 == 0) {
+                    for (int j = 1; j < tablero[i].length; j++) {
 
+                        System.out.print(tablero[i][j]);
+                        if (cont == (int) movimiento.peek() && movimiento.size() == 2) {
+                            movimiento.pop();
+                            destino = i + "" + j;
+                        } else if (cont == (int) movimiento.peek()) {
+                            movimiento.pop();
+                            inicio = i +""+ j;
+                        }
+                        if (movimiento.isEmpty()) {
+                            break forInicial;
+                        }
+                        System.out.println(cont);
+                        cont++;
+                        j++;
+                    }
+                } else {
+                    for (int j = 0; j < tablero[i].length; j++) {
 
-
-                    cont++;
-                    j++;
+                        System.out.print(tablero[i][j]);
+                        if (cont == (int) movimiento.peek() && movimiento.size() == 2) {
+                            movimiento.pop();
+                            destino = i + "" + j;
+                        } else if (cont == (int) movimiento.peek()) {
+                            movimiento.pop();
+                            inicio = i +""+ j;
+                        }
+                        if (movimiento.isEmpty()) {
+                            break forInicial;
+                        }
+                        System.out.println(cont);
+                        cont++;
+                        j++;
+                    }
                 }
-            } else {
-                for (int j = 0; j < tablero[i].length; j++) {
 
-
-
-                    cont++;
-                    j++;
-                }
             }
-
         }
 
-        return tablero;
+        System.out.println(cont);
+
+        if (isTurno()) {
+            movimientoBlancas(destino, inicio);
+        } else {
+            movimientoNegras(destino, inicio);
+        }
+        cont = 1;
+
 
     }
+
+    private void movimientoNegras(String destino, String inicio) {
+        if (tablero[Integer.parseInt(destino.substring(0, 1))][Integer.parseInt(destino.substring(1, 2))].equals("○") ||
+                tablero[Integer.parseInt(destino.substring(0, 1))][Integer.parseInt(destino.substring(1, 2))].equals("♕") ||
+                tablero[Integer.parseInt(inicio.substring(0, 1))][Integer.parseInt(inicio.substring(1, 2))].equals(" ") ||
+                tablero[Integer.parseInt(inicio.substring(0, 1))][Integer.parseInt(inicio.substring(1, 2))].equals("♛") ||
+                tablero[Integer.parseInt(inicio.substring(0, 1))][Integer.parseInt(inicio.substring(1, 2))].equals("●")) {
+            System.out.println("No puede mover porque estás moviendo una ficha que no toca o hacia donde no toca.");
+
+        } else {
+            tablero[Integer.parseInt(destino.substring(0, 1))][Integer.parseInt(destino.substring(1, 2))] =
+                    tablero[Integer.parseInt(inicio.substring(0, 1))][Integer.parseInt(inicio.substring(1, 2))];
+
+            tablero[Integer.parseInt(inicio.substring(0, 1))][Integer.parseInt(inicio.substring(1, 2))] = ".";
+        }
+    }
+
+    private void movimientoBlancas(String destino, String inicio) {
+        if (tablero[Integer.parseInt(destino.substring(0, 1))][Integer.parseInt(destino.substring(1, 2))].equals("●") ||
+                tablero[Integer.parseInt(destino.substring(0, 1))][Integer.parseInt(destino.substring(1, 2))].equals("♛") ||
+                tablero[Integer.parseInt(inicio.substring(0, 1))][Integer.parseInt(inicio.substring(1, 2))].equals(" ") ||
+                tablero[Integer.parseInt(inicio.substring(0, 1))][Integer.parseInt(inicio.substring(1, 2))].equals("♕") ||
+                tablero[Integer.parseInt(inicio.substring(0, 1))][Integer.parseInt(inicio.substring(1, 2))].equals("○")) {
+            System.out.println("No puede mover porque estás moviendo una ficha que no toca o hacia donde no toca.");
+
+        } else {
+            tablero[Integer.parseInt(destino.substring(0, 1))][Integer.parseInt(destino.substring(1, 2))] =
+                    tablero[Integer.parseInt(inicio.substring(0, 1))][Integer.parseInt(inicio.substring(1, 2))];
+
+            tablero[Integer.parseInt(inicio.substring(0, 1))][Integer.parseInt(inicio.substring(1, 2))] = ".";
+        }
+    }
+
 
     public void cambioTurno() {
         turno = !turno;

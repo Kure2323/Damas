@@ -19,6 +19,7 @@ public class Main {
 
             play.cambioTurno();
             limpiarPantalla();
+            System.out.println();
         }
 
     }
